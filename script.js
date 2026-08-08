@@ -1,3 +1,64 @@
+const themeToggle = document.querySelector("#theme-toggle");
+
+const updateThemeControl = (theme) => {
+  if (!themeToggle) {
+    return;
+  }
+
+  const darkModeActive = theme === "dark";
+  themeToggle.querySelector(".theme-icon").textContent = darkModeActive ? "☀" : "☾";
+  themeToggle.querySelector(".theme-label").textContent = darkModeActive ? "LIGHT" : "DARK";
+  themeToggle.setAttribute(
+    "aria-label",
+    darkModeActive ? "Switch to light mode" : "Switch to dark mode"
+  );
+};
+
+const applyTheme = (theme, persist = false) => {
+  document.documentElement.dataset.theme = theme;
+  updateThemeControl(theme);
+
+  if (persist) {
+    try {
+      localStorage.setItem("portfolio-theme", theme);
+    } catch (error) {
+      // The visual theme still applies when storage is unavailable.
+    }
+  }
+};
+
+applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true);
+  });
+}
+
+document.querySelectorAll("a").forEach((link) => {
+  Array.from(link.childNodes).forEach((node) => {
+    if (node.nodeType !== Node.TEXT_NODE || !node.textContent.includes("↗")) {
+      return;
+    }
+
+    const fragments = node.textContent.split("↗");
+    const replacement = document.createDocumentFragment();
+
+    fragments.forEach((fragment, index) => {
+      replacement.append(document.createTextNode(fragment));
+
+      if (index < fragments.length - 1) {
+        const arrow = document.createElement("span");
+        arrow.className = "external-arrow";
+        arrow.textContent = "↗";
+        replacement.append(arrow);
+      }
+    });
+
+    node.replaceWith(replacement);
+  });
+});
+
 document
   .querySelectorAll('a[href^="#"]')
   .forEach((link) => {
@@ -56,16 +117,90 @@ const prepareDeferredImages = (selector) => {
   });
 };
 
-prepareDeferredImages(".project-media img, .gallery-item img");
+prepareDeferredImages(".project-media img, .highlight-image-wrap img");
 
-const projectsSection = document.querySelector(".projects-scroll-section");
-const projectsViewport = document.querySelector(".projects-viewport");
-const projectsTrack = document.querySelector(".projects-track");
-const projectsMotionQuery = window.matchMedia(
+const highlightLightbox = document.querySelector("#highlight-lightbox");
+const highlightLightboxImage = document.querySelector("#highlight-lightbox-image");
+const highlightLightboxTitle = document.querySelector("#highlight-lightbox-title");
+const highlightLightboxPlaceholder = document.querySelector("#lightbox-placeholder");
+const highlightCloseButton = document.querySelector(".lightbox-close");
+let activeHighlightTrigger = null;
+
+const closeHighlightLightbox = () => {
+  if (!highlightLightbox || highlightLightbox.hidden) {
+    return;
+  }
+
+  highlightLightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+
+  if (highlightLightboxImage) {
+    highlightLightboxImage.hidden = true;
+    highlightLightboxImage.removeAttribute("src");
+  }
+
+  if (activeHighlightTrigger) {
+    activeHighlightTrigger.focus();
+    activeHighlightTrigger = null;
+  }
+};
+
+if (
+  highlightLightbox &&
+  highlightLightboxImage &&
+  highlightLightboxTitle &&
+  highlightLightboxPlaceholder &&
+  highlightCloseButton
+) {
+  document.querySelectorAll(".highlight-open").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const sourceImage = trigger.querySelector(".highlight-image-wrap img");
+      const title = trigger.dataset.title || "Highlight";
+      const imageAvailable = sourceImage && sourceImage.complete && sourceImage.naturalWidth > 0;
+
+      activeHighlightTrigger = trigger;
+      highlightLightboxTitle.textContent = title;
+      highlightLightboxPlaceholder.hidden = imageAvailable;
+
+      if (imageAvailable) {
+        highlightLightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+        highlightLightboxImage.alt = sourceImage.alt || title;
+        highlightLightboxImage.hidden = false;
+      } else {
+        highlightLightboxImage.hidden = true;
+      }
+
+      highlightLightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      highlightCloseButton.focus();
+    });
+  });
+
+  highlightCloseButton.addEventListener("click", closeHighlightLightbox);
+
+  highlightLightbox.addEventListener("click", (event) => {
+    if (event.target === highlightLightbox) {
+      closeHighlightLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !highlightLightbox.hidden) {
+      closeHighlightLightbox();
+    }
+  });
+}
+
+const pinnedMotionQuery = window.matchMedia(
   "(min-width: 769px) and (prefers-reduced-motion: no-preference)"
 );
+const topbar = document.querySelector(".topbar");
 
-if (projectsSection && projectsViewport && projectsTrack) {
+const initPinnedHorizontalSection = ({ section, viewport, track }) => {
+  if (!section || !viewport || !track) {
+    return;
+  }
+
   let sectionTop = 0;
   let scrollRange = 0;
   let horizontalOverflow = 0;
@@ -75,10 +210,10 @@ if (projectsSection && projectsViewport && projectsTrack) {
   const clamp = (value, minimum, maximum) =>
     Math.min(Math.max(value, minimum), maximum);
 
-  const renderProjects = () => {
+  const render = () => {
     scrollFrameRequested = false;
 
-    if (!projectsSection.classList.contains("is-scroll-driven")) {
+    if (!section.classList.contains("is-scroll-driven")) {
       return;
     }
 
@@ -87,74 +222,89 @@ if (projectsSection && projectsViewport && projectsTrack) {
       : 0;
     const translateX = -progress * horizontalOverflow;
 
-    projectsTrack.style.transform =
+    track.style.transform =
       `translate3d(${translateX}px, 0, 0)`;
   };
 
-  const requestProjectsRender = () => {
+  const requestRender = () => {
     if (!scrollFrameRequested) {
       scrollFrameRequested = true;
-      window.requestAnimationFrame(renderProjects);
+      window.requestAnimationFrame(render);
     }
   };
 
-  const measureProjects = () => {
+  const measure = () => {
     layoutFrameRequested = false;
 
-    if (!projectsMotionQuery.matches) {
-      projectsSection.classList.remove("is-scroll-driven");
-      projectsSection.style.removeProperty("--projects-scroll-height");
-      projectsTrack.style.removeProperty("transform");
+    if (!pinnedMotionQuery.matches) {
+      section.classList.remove("is-scroll-driven");
+      section.style.removeProperty("--pinned-scroll-height");
+      track.style.removeProperty("transform");
       sectionTop = 0;
       scrollRange = 0;
       horizontalOverflow = 0;
       return;
     }
 
-    projectsSection.classList.add("is-scroll-driven");
-    projectsTrack.style.transform = "translate3d(0, 0, 0)";
+    const navHeight = topbar ? topbar.offsetHeight : 80;
+    const availableStickyHeight = Math.max(1, window.innerHeight - navHeight);
 
-    const viewportHeight = window.innerHeight;
+    document.documentElement.style.setProperty("--nav-height", `${navHeight}px`);
+    section.classList.add("is-scroll-driven");
+    track.style.transform = "translate3d(0, 0, 0)";
+
     horizontalOverflow = Math.max(
       0,
-      projectsTrack.scrollWidth - projectsViewport.clientWidth
+      track.scrollWidth - viewport.clientWidth
     );
 
-    projectsSection.style.setProperty(
-      "--projects-scroll-height",
-      `${viewportHeight + horizontalOverflow}px`
+    section.style.setProperty(
+      "--pinned-scroll-height",
+      `${availableStickyHeight + horizontalOverflow}px`
     );
 
-    sectionTop = projectsSection.getBoundingClientRect().top + window.scrollY;
-    scrollRange = Math.max(0, projectsSection.offsetHeight - viewportHeight);
-    requestProjectsRender();
+    sectionTop = section.getBoundingClientRect().top + window.scrollY - navHeight;
+    scrollRange = Math.max(0, section.offsetHeight - availableStickyHeight);
+    requestRender();
   };
 
-  const requestProjectsMeasure = () => {
+  const requestMeasure = () => {
     if (!layoutFrameRequested) {
       layoutFrameRequested = true;
-      window.requestAnimationFrame(measureProjects);
+      window.requestAnimationFrame(measure);
     }
   };
 
-  window.addEventListener("scroll", requestProjectsRender, { passive: true });
-  window.addEventListener("resize", requestProjectsMeasure, { passive: true });
-  window.addEventListener("load", requestProjectsMeasure, { once: true });
-  window.addEventListener("pageshow", requestProjectsMeasure);
-  projectsMotionQuery.addEventListener("change", requestProjectsMeasure);
+  window.addEventListener("scroll", requestRender, { passive: true });
+  window.addEventListener("resize", requestMeasure, { passive: true });
+  window.addEventListener("load", requestMeasure, { once: true });
+  window.addEventListener("pageshow", requestMeasure);
+  pinnedMotionQuery.addEventListener("change", requestMeasure);
 
-  document.querySelectorAll("#projects img").forEach((image) => {
+  section.querySelectorAll("img").forEach((image) => {
     if (!image.complete) {
-      image.addEventListener("load", requestProjectsMeasure, { once: true });
+      image.addEventListener("load", requestMeasure, { once: true });
     }
   });
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(requestProjectsMeasure);
+    document.fonts.ready.then(requestMeasure);
   }
 
-  requestProjectsMeasure();
-}
+  requestMeasure();
+};
+
+initPinnedHorizontalSection({
+  section: document.querySelector(".projects-scroll-section"),
+  viewport: document.querySelector(".projects-viewport"),
+  track: document.querySelector(".projects-track")
+});
+
+initPinnedHorizontalSection({
+  section: document.querySelector(".highlights-scroll-section"),
+  viewport: document.querySelector(".highlights-viewport"),
+  track: document.querySelector(".highlights-track")
+});
 
 const contactForm = document.querySelector("#contact-form");
 const contactStatus = document.querySelector("#contact-status");
