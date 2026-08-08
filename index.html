@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mahmut Esat Kolay — Portfolio</title>
+  <link rel="icon" type="image/png" href="assets/branding/mek-icon.png">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="logo" href="#home" aria-label="MEK home"><img src="assets/branding/mek-icon.png" alt="MEK"></a>
+
+  <nav>
+    <a href="#experience">Experience</a>
+    <a href="#competitions">Competitions</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#skills">Skills</a>
+    <a href="#documents">Documents</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+    <span class="theme-icon" aria-hidden="true">☾</span>
+    <span class="theme-label">DARK</span>
+  </button>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="section hero">
+
+    <div>
+      <p class="kicker">Computer Engineering · AI · Robotics</p>
+
+      <h1>
+        Hello.<br>
+        I'm Mahmut Esat.
+      </h1>
+
+      <p class="lead">
+        I build intelligent systems around machine learning,
+        retrieval-augmented generation, predictive maintenance,
+        robotics, and industrial automation.
+      </p>
+
+      <a class="btn" href="#projects">
+        View projects
+      </a>
+    </div>
+
+    <div class="window profile-window">
+
+      <div class="windowbar">
+        <span>○ ○</span>
+        <b>mahmut.profile</b>
+      </div>
+
+      <div class="profilebox">
+
+        <img
+          src="assets/profile/profile2.jpg"
+          alt="Mahmut Esat Kolay"
+        >
+
+        <h2>Mahmut Esat Kolay</h2>
+        <p class="profile-title">Computer Engineering Student · AI &amp; ML</p>
+        <p class="profile-meta">Selçuk University · Konya, Türkiye</p>
+
+      </div>
+
+    </div>
+
+
+    <div class="quick">
+
+      <h2>Quick links</h2>
+
+      <div class="quickgrid">
+
+        <a href="#experience">
+          Experience ↗
+        </a>
+
+        <a href="#projects">
+          Projects ↗
+        </a>
+
+        <a href="#certificates">
+          Certificates ↗
+        </a>
+
+        <a href="#contact">
+          Contact ↗
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section pattern">
+
+    <p class="file">experience.log</p>
+
+    <h2 class="title">
+      Experience
+    </h2>
+
+
+    <div class="timeline">
+
+
+      <!-- MICROSOFT -->
+      <article>
+
+        <time>
+          June 2026 – August 2026
+        </time>
+
+        <i></i>
+
+        <img
+          src="assets/companies/microsoft.png"
+          alt="Microsoft"
+        >
+
+        <div>
+
+          <h3>
+            Microsoft
+          </h3>
+
+          <b>
+            AI Innovators Summer Intern
+          </b>
+
+          <p class="experience-meta">Hybrid · Istanbul, Türkiye</p>
+
+          <p>
+            Developed an advanced local-first Retrieval-Augmented Generation system using Microsoft Foundry Local for engineering and industrial knowledge workflows. The work combined hierarchical document parsing, hybrid BM25 and dense retrieval, Reciprocal Rank Fusion, cross-encoder reranking, query rewriting, retrieval grading, context reconstruction, citations, entity-graph exploration, and latency telemetry through a FastAPI application layer. It focused on retrieval quality, explainability, and dependable offline execution for technical knowledge environments.
+          </p>
+
+          <a class="experience-link" href="https://mek-0.github.io/Local-Rag-Foundry-assistant/" target="_blank" rel="noopener">View internship project <span class="external-arrow">↗</span></a>
+
+        </div>
+
+      </article>
+
+
+      <!-- TEI -->
+      <article>
+        <time>January 2026 – May 2026</time>
+        <i></i>
+        <img src="assets/companies/tei.png" alt="TUSAŞ Engine Industries">
+        <div>
+          <h3>TUSAŞ Engine Industries</h3>
+          <b>TEI Aviation Engines School</b>
+          <p>Selected for the TEI Aviation Engines School, a specialized aerospace-engine training program focused on introducing students to aviation propulsion technologies, engine systems, and industry-oriented engineering practices. The program provided structured exposure to aerospace engine concepts and the technical ecosystem surrounding modern propulsion systems.</p>
+        </div>
+      </article>
+
+
+      <!-- FAB -->
+      <article>
+
+        <time>
+          Sep 2025 – Nov 2025
+        </time>
+
+        <i></i>
+
+        <img
+          src="assets/companies/fab.jpeg"
+          alt="FAB"
+        >
+
+        <div>
+
+          <h3>
+            FAB
+          </h3>
+
+          <b>
+            Intern – Computer Engineering &amp; Product Management
+          </b>
+
+          <p class="experience-meta">Remote · Delaware, NY</p>
+
+          <p>
+            Completed an AI &amp; Startup Strategy Fellowship, applying Founder and Project Mindset principles to develop ideas from 0 to 1. Built UiPath workflow automations and used Google AI tools to translate business needs into generative-AI-driven solution concepts.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- OSR -->
+      <article>
+
+        <time>
+          June 2025 – July 2025
+        </time>
+
+        <i></i>
+
+        <img
+          src="assets/companies/osr.jpeg"
+          alt="OSR"
+        >
+
+        <div>
+
+          <h3>
+            OSR
+          </h3>
+
+          <b>
+            Intern – Computer Engineering &amp; Robotics
+          </b>
+
+          <p class="experience-meta">On-site · Konya, Türkiye</p>
+
+          <p>
+            Designed and implemented ML-driven fault-detection approaches for industrial robotic systems. Programmed KUKA robots and examined robot motion through kinematic analysis and dynamic modeling, connecting machine-learning methods with practical industrial robotics workflows.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- SELCUK UNIVERSITY -->
+      <article>
+        <time>October 2023 – Present</time>
+        <i></i>
+        <img src="assets/companies/selcuk.svg" alt="Selçuk University">
+        <div>
+          <h3>Selçuk University</h3>
+          <b>Bachelor of Computer Engineering</b>
+          <p class="experience-meta">On-site · Konya, Türkiye</p>
+          <p>Working on projects in Machine Learning, Deep Learning, Data Science, robotics, and intelligent industrial systems while studying core computer engineering topics including algorithms, data structures, object-oriented programming, and databases.</p>
+        </div>
+      </article>
+
+
+      <!-- KOMALP -->
+      <article>
+        <time>June 2023 – July 2023</time>
+        <i></i>
+        <img src="assets/companies/komalp.jpg" alt="Komalp">
+        <div>
+          <h3>Komalp</h3>
+          <b>Intern – Industrial Automation &amp; Electrical</b>
+          <p class="experience-meta">On-site · Konya, Türkiye</p>
+          <p>Participated in electrical installation works, assembly and maintenance of power factor correction panels, energy efficiency measurements, and system optimization activities. Took an active role in fault detection and repair, circuit connections, and on-site applications.</p>
+        </div>
+      </article>
+
+
+      <!-- DEVPAK -->
+      <article>
+
+        <time>
+          June 2022 – Oct 2022
+        </time>
+
+        <i></i>
+
+        <img
+          src="assets/companies/devpak.jpg"
+          alt="Devpak"
+        >
+
+        <div>
+
+          <h3>
+            Devpak
+          </h3>
+
+          <b>
+            Intern – Industrial Automation &amp; Control Systems
+          </b>
+
+          <p class="experience-meta">On-site · Konya, Türkiye</p>
+
+          <p>
+            Assisted in PLC programming, control panel design, and machine wiring for industrial automation systems. Contributed to the development of electrical systems for packaging and stretch wrapping machines. Observed and analyzed existing automation systems to identify improvements in operational efficiency.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- MEHMET TUZA PAKPEN TECHNICAL HIGH SCHOOL -->
+      <article>
+        <time>Sep 2019 – Jun 2023</time>
+        <i></i>
+        <img class="experience-logo" src="assets/companies/mtal.jpg" alt="Mehmet Tuza Pakpen Technical High School">
+        <div class="experience-content">
+          <h3>Mehmet Tuza Pakpen Technical High School</h3>
+          <b>Industrial Automation Technologies</b>
+          <p class="experience-meta">On-site · Konya, Türkiye</p>
+          <p>Worked on IoT-based projects combining foundational software and electronics skills. Studied microcontroller programming, circuit design, PLC systems, and industrial sensors.</p>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMPETITIONS & RESEARCH -->
+  <section id="competitions" class="section competitions-section">
+    <p class="file">competitions/</p>
+    <h2 class="title">Competitions &amp; Research</h2>
+    <div class="competition-list">
+      <article>
+        <div class="competition-logo"><img src="assets/companies/unilever" alt="Unilever"></div>
+        <div><h3>1st Place - Explore Unilever Factory Experience Case Competition | Unileve @HPC</h3><p>Designed and presented an end-to-end industrial problem-solving model for factory process optimization during a 1-day immersive case study sprint.</p><p>Secured 1st place among participating teams by delivering strategic, feasible, and sustainable operational solutions evaluated by Unilever plant managers and leaders.</p></div>
+      </article>
+      <article>
+        <div class="competition-logo"><img src="assets/companies/unilever" alt="Unilever"></div>
+        <div><h3>Unilever Chain Reaction @ U-House</h3><p>Participated in a supply chain simulation and conducted data-driven optimization strategy analyses in a competitive environment.</p></div>
+      </article>
+      <article>
+        <div class="competition-logo"><img src="assets/companies/tübitak.png" alt="TÜBİTAK"></div>
+        <div><h3>TÜBİTAK 2209-A Undergraduate Research</h3><p>Developed an image processing-based optimization project for the detection and classification of oilseeds using deep learning methods.</p></div>
+      </article>
+      <article>
+        <div class="competition-logo"><img src="assets/companies/eka.png" alt="Emlak Konut"></div>
+        <div><h3>Emlak Konut – Smart Vertical Transport &amp; Robotic Construction Competition</h3><p>Ranked among the top 10 teams and qualified for the finals.</p></div>
+      </article>
+      <article>
+        <div class="competition-logo"><img src="assets/companies/btk.png" alt="BTK"></div>
+        <div><h3>BTK Ankara AI Hackathon @ Ankara Teknopark</h3><p>As part of a team, designed a functional AI-based prototype application within 30 hours under real-world constraints.</p></div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-scroll-section pinned-horizontal-section">
+
+    <div class="projects-sticky pinned-horizontal-sticky">
+
+      <div class="projects-heading pinned-horizontal-header">
+
+        <p class="file">
+          projects/
+        </p>
+
+        <h2 class="title">
+          Selected Projects
+        </h2>
+
+      </div>
+
+
+      <div class="projects-viewport pinned-horizontal-viewport">
+
+        <div class="cards projects-track pinned-horizontal-track">
+
+
+      <!-- PROJECT 1 -->
+      <article class="window project project-card project-blue">
+        <div class="windowbar"><span aria-hidden="true">⌘</span><b>local-rag.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">⌘</span><b>PROJECT 01</b></div>
+          <img src="assets/projects/project01.png" alt="Local RAG Assistant project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3>Local RAG Assistant</h3>
+          <p class="project-subtitle">Structure-Aware Hybrid RAG for Technical Document Intelligence</p>
+          <div class="project-copy">
+            <p>A local-first, offline-first document question-answering system designed for engineering and industrial knowledge environments. It parses Markdown, PDF, Word, Excel, and CSV sources into hierarchical knowledge structures instead of relying solely on flat, fixed-size chunks.</p>
+            <p>Retrieval combines dense semantic search, BM25, Reciprocal Rank Fusion, cross-encoder reranking, query expansion, retrieval grading, and bounded follow-up retrieval. Parent-section reconstruction, entity co-occurrence exploration, source citations, explainability data, and per-stage latency telemetry are exposed through a FastAPI backend with Microsoft Foundry Local inference.</p>
+          </div>
+          <p class="project-tech">Foundry Local · FastAPI · RAG · BM25 · Dense Retrieval · RRF · Cross-Encoder</p>
+          <div class="project-actions">
+            <a href="https://github.com/MEK-0/Local-Rag-Foundry-assistant" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+            <a href="https://mek-0.github.io/Local-Rag-Foundry-assistant/" target="_blank" rel="noopener">Live Site <span class="external-arrow">↗</span></a>
+            <a href="viewer.html?file=assets%2Fdocuments%2FEsatkolayRAGproject.pdf&amp;title=FoundryRAG%20Technical%20Report">Technical Report <span class="external-arrow">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="window project project-card project-lavender">
+        <div class="windowbar"><span aria-hidden="true">▣</span><b>turing-machines.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">▣</span><b>PROJECT 02</b></div>
+          <img src="assets/projects/project02.png" alt="Turing Machines LAB project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3>Turing Machines LAB</h3>
+          <div class="project-copy">
+            <p>An experimentation and simulation environment for exploring Turing machines and foundational computational theory. The project provides a practical way to reason about machine states, transition rules, tape operations, and step-by-step computation.</p>
+            <p>It is structured as a laboratory for observing how formal transition definitions evolve over a tape, making abstract automata concepts easier to inspect and test.</p>
+          </div>
+          <p class="project-tech">Turing Machines · State Transitions · Tape Operations · Computational Theory</p>
+          <div class="project-actions">
+            <a href="https://github.com/MEK-0/Turing_Machines_LAB" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+            <a href="#documents">Documents <span class="external-arrow">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 -->
+      <article class="window project project-card project-green">
+        <div class="windowbar"><span aria-hidden="true">◆</span><b>battery-rul.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">◆</span><b>PROJECT 03</b></div>
+          <img src="assets/projects/project03.png" alt="NASA Li-Ion Battery RUL project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3> Li-Ion Battery RUL Prediction with XAI &amp; Adaptive LSTM</h3>
+          <div class="project-copy">
+            <p>Predicts remaining useful life from the NASA PCoE Li-Ion battery dataset using an LSTM and attention architecture. Attention provides explainability by showing which time steps influence the prediction across 4°C, 24°C, and 43°C operating conditions.</p>
+            <p>An adaptive padding and windowing strategy supports prediction from Cycle 0 and addresses cold-start behavior for short-life batteries such as B0032.</p>
+          </div>
+          <p class="project-tech">Python · PyTorch · Deep Learning · LSTM · Attention · Explainable AI</p>
+          <strong class="project-result">Approximately 84% RMSE reduction was reported for the critical B0032 tested case; this is not presented as a universal result.</strong>
+          <div class="project-actions"><a href="viewer.html?file=assets%2Fdocuments%2FBattery_RUL_Technical_Documentation.pdf.pdf&amp;title=Battery%20RUL%20Technical%20Documentation">Documents <span class="external-arrow">↗</span></a></div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 -->
+      <article class="window project project-card project-pink">
+        <div class="windowbar"><span aria-hidden="true">⚙</span><b>kuka-dynamics.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">⚙</span><b>PROJECT 04</b></div>
+          <img src="assets/projects/project04.png" alt="KUKA Dynamics Analysis project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3>KUKA Dynamics Analysis</h3>
+          <div class="project-copy">
+            <p>A desktop engineering application for analyzing the dynamics of industrial KUKA robots. It brings Newton–Euler and Lagrange formulations into a focused workflow for examining robot motion, torque calculations, and workspace behavior.</p>
+            <p>Engineering visualizations support the interpretation of dynamic and kinematic results, connecting mathematical models with industrial robotics analysis.</p>
+          </div>
+          <p class="project-tech">Industrial Robotics · KUKA · Newton–Euler · Lagrange · Torque · Workspace Analysis</p>
+          <div class="project-actions">
+            <a href="https://github.com/MEK-0/KUKA-Dynamics-Analysis" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+            <a href="#documents">Documents <span class="external-arrow">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 5 -->
+      <article class="window project project-card project-yellow">
+        <div class="windowbar"><span aria-hidden="true">◫</span><b>inventory-optimization.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">◫</span><b>PROJECT 05</b></div>
+          <img src="assets/projects/project05.png" alt="AI-driven inventory optimization project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3>AI-Driven Inventory Optimization for FMCG</h3>
+          <div class="project-copy">
+            <p>An end-to-end predictive analytics framework for FMCG raw-material inventory optimization. It combines time-series feature engineering and XGBoost demand forecasting with a dynamic safety-stock algorithm under simulated demand volatility.</p>
+            <p>The optimization layer evaluates inventory decisions against service-level requirements and total-cost behavior within the project’s simulation and test setup.</p>
+          </div>
+          <p class="project-tech">Python · Pandas · XGBoost</p>
+          <strong class="project-result">Reported simulation result: 32.6% reduction in total inventory costs while maintaining a 95% service level.</strong>
+          <div class="project-actions">
+            <a href="https://github.com/MEK-0/AI-Driven-Inventory-Optimization-for-FMCG" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+            <a href="#documents">Documents <span class="external-arrow">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 6 -->
+      <article class="window project project-card project-blue">
+        <div class="windowbar"><span aria-hidden="true">◆</span><b>turbofan-rul.project</b></div>
+        <div class="project-media">
+          <div class="project-placeholder"><span aria-hidden="true">◆</span><b>PROJECT 06</b></div>
+          <img src="assets/projects/project06.png" alt="Turbofan engine RUL prediction project preview" hidden>
+        </div>
+        <div class="body project-body">
+          <h3>Remaining Useful Life Prediction of Turbofan Engines Using LSTM Networks</h3>
+          <p class="project-subtitle">Turbofan Engine RUL Prediction</p>
+          <div class="project-copy">
+            <p>Developed an LSTM-based Remaining Useful Life prediction system for turbofan engines using the NASA CMAPSS dataset. The model learns temporal degradation patterns from multivariate sensor sequences to estimate remaining operating cycles before failure.</p>
+            <p>The preprocessing pipeline uses moving-average filtering, variance-threshold feature selection, and sliding windows of 50 time steps. Predictions are exposed through a REST/FastAPI interface and evaluated only against the stated unseen test split.</p>
+          </div>
+          <p class="project-tech">Python · LSTM · CMAPSS · FastAPI · Time Series</p>
+          <strong class="project-result">RMSE 13.87 on the stated unseen test set.</strong>
+          <div class="project-actions">
+            <a href="https://github.com/MEK-0/Turbofan-RUL-Prediction-LSTM" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+            <a href="viewer.html?file=assets%2Fdocuments%2FRemaining%20Useful%20Life%20Prediction%20of%20Turbofan%20Engines%20Using%20LSTM%20Networks%20with%20Piecewise%20Linear%20Target%20Labeling%20MEK.pdf.pdf&amp;title=Turbofan%20RUL%20Prediction%20%E2%80%94%20Technical%20Document">Technical Document <span class="external-arrow">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATES -->
+  <section id="certificates" class="section pattern">
+
+    <p class="file">
+      certificates/
+    </p>
+
+    <h2 class="title">
+      Certificates & Programs
+    </h2>
+
+
+    <div class="certificate-grid">
+      <article class="window certificate-card"><div class="windowbar doc-blue"><b>Ankara_AI_Hackathon_Sertifika.pdf.pdf</b></div><div class="certificate-body"><h3>Ankara AI Hackathon Sertifika</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FAnkara_AI_Hackathon_Sertifika.pdf.pdf&amp;title=Ankara%20AI%20Hackathon%20Sertifika">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-pink"><b>Aspire-Certificate.pdf</b></div><div class="certificate-body"><h3>Aspire Certificate</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FAspire-Certificate.pdf&amp;title=Aspire%20Certificate">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-green"><b>Deloitte.pdf</b></div><div class="certificate-body"><h3>Deloitte</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FDeloitte.pdf&amp;title=Deloitte">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-yellow"><b>My Learning - NVIDIA.pdf</b></div><div class="certificate-body"><h3>My Learning - NVIDIA</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FMy%20Learning%20-%20NVIDIA.pdf&amp;title=My%20Learning%20-%20NVIDIA">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-lavender"><b>SCH-aiscale.pdf</b></div><div class="certificate-body"><h3>SCH Aiscale</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FSCH-aiscale.pdf&amp;title=SCH%20Aiscale">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-blue"><b>UnileverChain.pdf</b></div><div class="certificate-body"><h3>Unilever Chain</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FUnileverChain.pdf&amp;title=Unilever%20Chain">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-pink"><b>UnileverChallenge.pdf</b></div><div class="certificate-body"><h3>Unilever Challenge</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FUnileverChallenge.pdf&amp;title=Unilever%20Challenge">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-green"><b>UnileverSupplyChain.pdf</b></div><div class="certificate-body"><h3>Unilever Supply Chain</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FUnileverSupplyChain.pdf&amp;title=Unilever%20Supply%20Chain">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-yellow"><b>ibmAI.pdf</b></div><div class="certificate-body"><h3>IBM AI</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2FibmAI.pdf&amp;title=IBM%20AI">Open <span class="external-arrow">↗</span></a></div></article>
+      <article class="window certificate-card"><div class="windowbar doc-lavender"><b>kaggle.pdf</b></div><div class="certificate-body"><h3>Kaggle</h3><span>PDF</span><a href="viewer.html?file=assets%2Fcertificates%2Fkaggle.pdf&amp;title=Kaggle">Open <span class="external-arrow">↗</span></a></div></article>
+    </div>
+
+  </section>
+
+
+  <!-- TECHNICAL SKILLS -->
+  <section id="skills" class="section">
+    <p class="file">skills.json</p>
+    <h2 class="title">Technical Skills</h2>
+    <div class="skills-grid">
+      <article class="skill-blue"><h3>Data Engineering &amp; Analytics</h3><p>Power BI · SQL · ETL · Web Scraping · Pandas</p></article>
+      <article class="skill-pink"><h3>AI &amp; Machine Learning</h3><p>LLM · RAG · Computer Vision · Deep Learning</p></article>
+      <article class="skill-green"><h3>Languages</h3><p>Python · C++ · C# · Java</p></article>
+      <article class="skill-yellow"><h3>Robotics &amp; Automation</h3><p>KUKA Sim Pro · KRL · PLC · ROS · IoT</p></article>
+      <article class="skill-lavender"><h3>DevOps &amp; Tools</h3><p>Git · Docker · UiPath · Linux</p></article>
+    </div>
+  </section>
+
+
+  <!-- DOCUMENTS -->
+  <section id="documents" class="section">
+
+    <p class="file">
+      documents/
+    </p>
+
+    <h2 class="title">
+      Documents
+    </h2>
+
+
+    <div class="documents-grid">
+      <article class="window doc doc-card">
+        <div class="windowbar doc-yellow"><b>cv.pdf</b></div>
+        <div class="doc-body"><p>Curriculum Vitae</p><span>CV · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2Fcv.pdf&amp;title=Curriculum%20Vitae">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-green"><b>EsatkolayRAGproject.pdf</b></div>
+        <div class="doc-body"><p>FoundryRAG Technical Report</p><span>Technical Report · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FEsatkolayRAGproject.pdf&amp;title=FoundryRAG%20Technical%20Report">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-blue"><b>Battery_RUL_Technical_Documentation.pdf.pdf</b></div>
+        <div class="doc-body"><p>Battery RUL Technical Documentation</p><span>Technical documentation · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FBattery_RUL_Technical_Documentation.pdf.pdf&amp;title=Battery%20RUL%20Technical%20Documentation">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-pink"><b>MekReader_Technical_Documentation_v2.pdf.pdf</b></div>
+        <div class="doc-body"><p>AI-Powered Academic Paper Asisstant</p><span>Technical documentation · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FMekReader_Technical_Documentation_v2.pdf.pdf&amp;title=MekReader%20Technical%20Documentation%20v2">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-green"><b>NeuralNetwork_Documentation.pdf.pdf</b></div>
+        <div class="doc-body"><p>Neural Network Documentation</p><span>Technical documentation · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FNeuralNetwork_Documentation.pdf.pdf&amp;title=Neural%20Network%20Documentation">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-lavender"><b>Remaining Useful Life Prediction of Turbofan Engines Using LSTM Networks with Piecewise Linear Target Labeling MEK.pdf.pdf</b></div>
+        <div class="doc-body"><p>Remaining Useful Life Prediction of Turbofan Engines Using LSTM Networks with Piecewise Linear Target Labeling</p><span>Research paper · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FRemaining%20Useful%20Life%20Prediction%20of%20Turbofan%20Engines%20Using%20LSTM%20Networks%20with%20Piecewise%20Linear%20Target%20Labeling%20MEK.pdf.pdf&amp;title=Remaining%20Useful%20Life%20Prediction%20of%20Turbofan%20Engines%20Using%20LSTM%20Networks%20with%20Piecewise%20Linear%20Target%20Labeling">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-yellow"><b>SUTIS[1].pdf.pdf</b></div>
+        <div class="doc-body"><p>SUTIS</p><span>Project document · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FSUTIS%5B1%5D.pdf.pdf&amp;title=SUTIS">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+
+      <article class="window doc doc-card">
+        <div class="windowbar doc-blue"><b>Veri_Madenciliği_Final-Butunleme_Raporu.pdf.pdf</b></div>
+        <div class="doc-body"><p>Iron(FE) atomic spectrum data</p><span>Report · PDF</span><a href="viewer.html?file=assets%2Fdocuments%2FVeri_Madencilig%CC%86i_Final-Butunleme_Raporu.pdf.pdf&amp;title=Veri%20Madencili%C4%9Fi%20Final-B%C3%BCt%C3%BCnleme%20Raporu">Open <span class="external-arrow">↗</span></a></div>
+      </article>
+    </div>
+
+  </section>
+
+
+  <!-- HIGHLIGHTS -->
+  <section id="highlights" class="highlights-scroll-section pinned-horizontal-section">
+    <div class="highlights-sticky pinned-horizontal-sticky pattern">
+      <div class="highlights-heading pinned-horizontal-header">
+        <p class="file">highlights/</p>
+        <h2 class="title">Highlights</h2>
+        <p class="highlights-intro">Selected moments from internships, competitions, engineering work, and technical events.</p>
+      </div>
+
+      <div class="highlights-viewport pinned-horizontal-viewport">
+        <div class="highlights-rail highlights-track pinned-horizontal-track" aria-label="Career highlights">
+      <article class="window highlight-card">
+        <div class="windowbar doc-blue"><span aria-hidden="true">◈</span><b>microsoft-office.jpg</b></div>
+        <button class="highlight-open" type="button" data-title="Microsoft Türkiye — AI Innovators Summer Internship" aria-label="View Microsoft Türkiye — AI Innovators Summer Internship highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder">PHOTO 01</span><img src="assets/highlights/photo1.jpg" alt="Microsoft Türkiye — AI Innovators Summer Internship" hidden></div>
+          <div class="highlight-caption"><h3>Microsoft Türkiye — AI Innovators Summer Internship</h3></div>
+        </button>
+      </article>
+
+      <article class="window highlight-card">
+        <div class="windowbar doc-yellow"><span aria-hidden="true">◆</span><b>unilever-chain-reaction.jpg</b></div>
+        <button class="highlight-open" type="button" data-title="Unilever Chain Reaction @ U-House" aria-label="View Unilever Chain Reaction at U-House highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder">PHOTO 02</span><img src="assets/highlights/photo2.jpg" alt="Unilever Chain Reaction @ U-House" hidden></div>
+          <div class="highlight-caption"><h3>Unilever Chain Reaction @ U-House</h3></div>
+        </button>
+      </article>
+
+      <article class="window highlight-card">
+        <div class="windowbar doc-green"><span aria-hidden="true">✦</span><b>unilever-factory-win.jpg</b></div>
+        <button class="highlight-open" type="button" data-title="Explore Unilever Factory Experience — 1st Place" aria-label="View Explore Unilever Factory Experience first place highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder">PHOTO 03</span><img src="assets/highlights/photo3.jpg" alt="Explore Unilever Factory Experience — 1st Place" hidden></div>
+          <div class="highlight-caption"><h3>Explore Unilever Factory Experience — 1st Place</h3></div>
+        </button>
+      </article>
+
+      <article class="window highlight-card">
+        <div class="windowbar doc-pink"><span aria-hidden="true">⚙</span><b>robotics-internship.jpg</b></div>
+        <button class="highlight-open" type="button" data-title="Robotics Internship — KUKA / Industrial Robotics" aria-label="View Robotics Internship KUKA and Industrial Robotics highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder">PHOTO 04</span><img src="assets/highlights/photo4.jpg" alt="Robotics Internship — KUKA / Industrial Robotics" hidden></div>
+          <div class="highlight-caption"><h3>Robotics Internship — KUKA / Industrial Robotics</h3></div>
+        </button>
+      </article>
+
+      <article class="window highlight-card">
+        <div class="windowbar doc-lavender"><span aria-hidden="true">⌘</span><b>ankara-ai-hackathon.jpg</b></div>
+        <button class="highlight-open" type="button" data-title="Ankara AI Hackathon @ Ankara Teknopark" aria-label="View Ankara AI Hackathon at Ankara Teknopark highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder">PHOTO 05</span><img src="assets/highlights/photo5.jpg" alt="Ankara AI Hackathon @ Ankara Teknopark" hidden></div>
+          <div class="highlight-caption"><h3>Ankara AI Hackathon @ Ankara Teknopark</h3></div>
+        </button>
+      </article>
+
+      <article class="window highlight-card">
+        <div class="windowbar doc-blue"><span aria-hidden="true">▣</span><b>cubesat-space-selfie.jpeg</b></div>
+        <button class="highlight-open" type="button" data-title="CubeSat Space Selfie" aria-label="View CubeSat Space Selfie highlight">
+          <div class="highlight-image-wrap"><span class="highlight-placeholder"><photo6 class="jpg"></photo6></span><img class="highlight-image--contain" src="assets/highlights/photo6.jpg" alt="CubeSat-captured selfie with Earth in the background" hidden></div>
+          <div class="highlight-caption"><h3>CubeSat Space Selfie</h3><p>A CubeSat-captured selfie with Earth in the background.</p></div>
+        </button>
+      </article>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact contact-compact">
+    <p class="file">contact.mail</p>
+    <h2 class="title">Contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-links" aria-label="Contact links">
+        <a href="https://github.com/MEK-0" target="_blank" rel="noopener">GitHub <span class="external-arrow">↗</span></a>
+        <a href="https://www.linkedin.com/in/mahmutesatkolay/" target="_blank" rel="noopener">LinkedIn <span class="external-arrow">↗</span></a>
+        <a href="mailto:esat.kolay19@gmail.com">Email <span class="external-arrow">↗</span></a>
+      </div>
+
+      <div class="window mail-window">
+        <div class="windowbar doc-pink"><span aria-hidden="true">○ ○</span><b>new-message.mail</b></div>
+        <form id="contact-form" class="contact-form">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required>
+
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="5" required></textarea>
+
+          <p class="form-status" id="contact-status" aria-live="polite"></p>
+          <button class="btn contact-submit" type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<div class="highlight-lightbox" id="highlight-lightbox" hidden>
+  <div class="highlight-lightbox-window window" role="dialog" aria-modal="true" aria-labelledby="highlight-lightbox-title">
+    <div class="windowbar doc-blue">
+      <b id="highlight-lightbox-title">Highlight</b>
+      <button class="lightbox-close" type="button" aria-label="Close highlight viewer">CLOSE ×</button>
+    </div>
+    <div class="highlight-lightbox-content">
+      <span class="lightbox-placeholder" id="lightbox-placeholder">IMAGE COMING SOON</span>
+      <img id="highlight-lightbox-image" alt="" hidden>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
