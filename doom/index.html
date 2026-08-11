@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DOOM · 1993</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>DOOM</h1>
+      <p>id Software · 1993</p>
+    </header>
+
+    <section class="game-shell" id="game-shell" aria-label="DOOM game" tabindex="0">
+      <canvas id="canvas" width="640" height="480" tabindex="-1" aria-label="DOOM game canvas"></canvas>
+      <div id="status" class="status" role="status" aria-live="polite">CHECKING GAME DATA…</div>
+    </section>
+
+    <button id="start" type="button" disabled>CLICK TO START</button>
+
+    <section class="controls" aria-labelledby="controls-title">
+      <h2 id="controls-title">CONTROLS</h2>
+      <dl>
+        <dt>ARROWS / WASD</dt><dd>MOVE</dd>
+        <dt>CTRL</dt><dd>FIRE</dd>
+        <dt>SPACE</dt><dd>USE</dd>
+        <dt>ESC</dt><dd>MENU</dd>
+      </dl>
+    </section>
+
+    <footer><a href="LICENSES.md">LICENSES &amp; ATTRIBUTION</a></footer>
+  </main>
+
+  <script>
+    (() => {
+      const shell = document.querySelector('#game-shell');
+      const canvas = document.querySelector('#canvas');
+      const status = document.querySelector('#status');
+      const start = document.querySelector('#start');
+      let runtimeReady = false;
+      let started = false;
+
+      const setStatus = (message, isError = false) => {
+        status.textContent = message;
+        status.classList.toggle('error', isError);
+        status.hidden = !message;
+      };
+
+      const focusGame = () => {
+        shell.focus({ preventScroll: true });
+        canvas.focus({ preventScroll: true });
+      };
+
+      const startGame = async () => {
+        focusGame();
+        if (!runtimeReady || started) return;
+        started = true;
+        start.disabled = true;
+        setStatus('LOADING ENGINE…');
+        const script = document.createElement('script');
+        script.src = 'websockets-doom.js';
+        script.onerror = () => setStatus('LOAD FAILED: ENGINE JAVASCRIPT UNAVAILABLE', true);
+        document.body.append(script);
+      };
+
+      shell.addEventListener('click', startGame);
+      start.addEventListener('click', startGame);
+      document.addEventListener('keydown', (event) => {
+        if (document.activeElement === canvas && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'].includes(event.code)) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+
+      window.Module = {
+        arguments: ['-iwad', 'doom1.wad', '-window', '-nogui', '-nomusic', '-config', 'default.cfg'],
+        canvas,
+        preRun() {
+          Module.FS_preloadFile('', 'doom1.wad', 'doom1.wad', true, true);
+          Module.FS_preloadFile('', 'default.cfg', 'default.cfg', true, true);
+        },
+        onRuntimeInitialized() {
+          setStatus('STARTING…');
+          window.setTimeout(() => setStatus(''), 750);
+        },
+        setStatus(message) {
+          if (message) setStatus(message.toUpperCase());
+        },
+        monitorRunDependencies(left) {
+          setStatus(left ? `LOADING… ${left} FILE${left === 1 ? '' : 'S'}` : 'INITIALIZING…');
+        },
+        print: (...args) => console.log(...args),
+        printErr: (...args) => console.error(...args),
+        onAbort(reason) {
+          setStatus(`LOAD FAILED: ${reason || 'UNKNOWN ERROR'}`, true);
+        }
+      };
+
+      window.addEventListener('error', (event) => {
+        if (started) setStatus(`LOAD FAILED: ${event.message || 'RUNTIME FILE UNAVAILABLE'}`, true);
+      });
+      window.addEventListener('unhandledrejection', (event) => {
+        const reason = event.reason?.stack || event.reason || 'UNKNOWN RUNTIME ERROR';
+        console.error('UNHANDLED:', reason);
+        setStatus(`RUNTIME FAILED: ${event.reason?.message || event.reason || 'UNKNOWN ERROR'}`, true);
+      });
+
+      fetch('doom1.wad', { method: 'HEAD', cache: 'no-store' }).then((response) => {
+        if (!response.ok) throw new Error(`doom1.wad returned HTTP ${response.status}`);
+        runtimeReady = true;
+        start.disabled = false;
+        setStatus('READY — CLICK TO START');
+      }).catch(() => {
+        setStatus('MISSING GAME DATA: ADD THE SHAREWARE doom1.wad TO THIS FOLDER', true);
+      });
+    })();
+  </script>
+</body>
+</html>

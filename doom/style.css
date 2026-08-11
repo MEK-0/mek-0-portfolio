@@ -1,0 +1,87 @@
+:root {
+  color-scheme: dark;
+  font-family: "Courier New", Courier, monospace;
+  background: #050505;
+  color: #d8d8cc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 32px 16px;
+  background: #050505;
+}
+
+main { width: min(920px, 100%); margin: 0 auto; }
+
+header { margin-bottom: 20px; }
+h1 { margin: 0; color: #e4482f; font-size: clamp(2.5rem, 8vw, 5rem); line-height: .9; letter-spacing: -.08em; }
+header p { margin: 10px 0 0; color: #8e8e84; }
+
+.game-shell {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid #8e8e84;
+  outline: none;
+  background: #000;
+  cursor: crosshair;
+}
+
+.game-shell:focus-within { border-color: #e4482f; }
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  image-rendering: pixelated;
+}
+
+.status {
+  position: absolute;
+  inset: auto 16px 16px;
+  padding: 8px 10px;
+  color: #e4d9a7;
+  background: rgba(0, 0, 0, .88);
+  text-align: center;
+  pointer-events: none;
+}
+
+.status.error { color: #ff654f; }
+
+#start {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  color: #050505;
+  background: #d8d8cc;
+  font: bold 1rem/1 "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+
+#start:hover:not(:disabled), #start:focus-visible { background: #e4482f; }
+#start:disabled { color: #777; background: #222; cursor: wait; }
+
+.controls { margin-top: 34px; }
+h2 { margin: 0 0 14px; color: #e4482f; font-size: 1rem; letter-spacing: .12em; }
+dl { display: grid; grid-template-columns: minmax(150px, 1fr) 1fr; max-width: 430px; margin: 0; gap: 7px 24px; }
+dt, dd { margin: 0; }
+dt { color: #fff; }
+dd { color: #8e8e84; }
+footer { margin-top: 34px; font-size: .75rem; }
+a { color: #8e8e84; }
+a:hover { color: #e4482f; }
+
+@media (max-width: 520px) {
+  body { padding: 20px 10px; }
+  dl { grid-template-columns: 1fr auto; gap: 7px 12px; }
+  .status { inset: auto 8px 8px; font-size: .78rem; }
+}
