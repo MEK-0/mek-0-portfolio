@@ -45,6 +45,84 @@ canvas {
   image-rendering: pixelated;
 }
 
+.touch-controller,
+.rotate-notice {
+  display: none;
+}
+
+.touch-controller {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  align-items: end;
+  justify-content: space-between;
+  padding:
+    12px
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.touch-dpad {
+  display: grid;
+  grid-template: repeat(2, var(--touch-key-size)) / repeat(3, var(--touch-key-size));
+  gap: 3px;
+}
+
+.touch-up { grid-area: 1 / 2; }
+.touch-left { grid-area: 2 / 1; }
+.touch-down { grid-area: 2 / 2; }
+.touch-right { grid-area: 2 / 3; }
+
+.touch-actions {
+  display: grid;
+  grid-template-columns: repeat(2, var(--touch-key-size));
+  grid-template-rows: var(--touch-key-size) var(--touch-key-size);
+  gap: 5px;
+  align-items: end;
+}
+
+.touch-key {
+  min-width: 0;
+  padding: 0;
+  border: 2px solid rgba(216, 216, 204, .78);
+  border-radius: 0;
+  color: #fff;
+  background: rgba(5, 5, 5, .62);
+  font: 700 clamp(.55rem, 2.4vw, .72rem)/1 "Courier New", Courier, monospace;
+  letter-spacing: -.04em;
+  touch-action: none;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.touch-fire {
+  grid-area: 1 / 1 / 3 / 2;
+  width: calc(var(--touch-key-size) * 1.18);
+  height: calc(var(--touch-key-size) * 1.45);
+  align-self: end;
+  border-color: rgba(228, 72, 47, .9);
+}
+
+.touch-use { grid-area: 1 / 2; }
+.touch-run { grid-area: 2 / 2; }
+
+.touch-key.is-pressed {
+  color: #050505;
+  background: rgba(216, 216, 204, .9);
+  transform: translateY(1px);
+}
+
+.touch-fire.is-pressed {
+  background: rgba(228, 72, 47, .92);
+}
+
 .status {
   position: absolute;
   inset: auto 16px 16px;
@@ -84,4 +162,62 @@ a:hover { color: #e4482f; }
   body { padding: 20px 10px; }
   dl { grid-template-columns: 1fr auto; gap: 7px 12px; }
   .status { inset: auto 8px 8px; font-size: .78rem; }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .game-shell {
+    --touch-key-size: clamp(42px, 11vw, 62px);
+    touch-action: none;
+    cursor: default;
+  }
+
+  .touch-controller {
+    display: flex;
+  }
+}
+
+@media (hover: none) and (orientation: portrait),
+       (pointer: coarse) and (orientation: portrait),
+       (max-width: 768px) and (orientation: portrait) {
+  .rotate-notice {
+    display: block;
+    margin: 10px 0 0;
+    color: #e4d9a7;
+    font-size: .7rem;
+    line-height: 1.35;
+    text-align: center;
+    letter-spacing: .08em;
+  }
+}
+
+@media (hover: none) and (orientation: landscape) and (max-height: 560px),
+       (pointer: coarse) and (orientation: landscape) and (max-height: 560px),
+       (max-width: 768px) and (orientation: landscape) and (max-height: 560px) {
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding:
+      max(6px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(6px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+  }
+
+  main {
+    width: min(100%, calc(133.333vh - 104px));
+    width: min(100%, calc(133.333dvh - 104px));
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  h1 { font-size: 2rem; }
+  header p { margin: 0; font-size: .7rem; }
+  #start { padding: 9px; font-size: .75rem; }
+  .controls, footer { display: none; }
+  .status { inset: 8px 8px auto; font-size: .65rem; }
 }

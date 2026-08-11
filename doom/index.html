@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>DOOM · 1993</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,9 +16,26 @@
     <section class="game-shell" id="game-shell" aria-label="DOOM game" tabindex="0">
       <canvas id="canvas" width="640" height="480" tabindex="-1" aria-label="DOOM game canvas"></canvas>
       <div id="status" class="status" role="status" aria-live="polite">CHECKING GAME DATA…</div>
+
+      <div class="touch-controller" aria-label="Touch game controls">
+        <div class="touch-dpad" aria-label="Movement controls">
+          <button class="touch-key touch-up" type="button" data-control="up" aria-label="Move forward">UP</button>
+          <button class="touch-key touch-left" type="button" data-control="left" aria-label="Turn left">LEFT</button>
+          <button class="touch-key touch-down" type="button" data-control="down" aria-label="Move backward">DOWN</button>
+          <button class="touch-key touch-right" type="button" data-control="right" aria-label="Turn right">RIGHT</button>
+        </div>
+
+        <div class="touch-actions" aria-label="Action controls">
+          <button class="touch-key touch-fire" type="button" data-control="fire" aria-label="Fire weapon">FIRE</button>
+          <button class="touch-key touch-use" type="button" data-control="use" aria-label="Use or open">USE</button>
+          <button class="touch-key touch-run" type="button" data-control="run" aria-label="Run while moving">RUN</button>
+        </div>
+      </div>
     </section>
 
     <button id="start" type="button" disabled>CLICK TO START</button>
+
+    <p class="rotate-notice">ROTATE DEVICE<br>FOR BEST EXPERIENCE</p>
 
     <section class="controls" aria-labelledby="controls-title">
       <h2 id="controls-title">CONTROLS</h2>
@@ -116,5 +133,6 @@
       });
     })();
   </script>
+  <script src="touch-controls.js"></script>
 </body>
 </html>
