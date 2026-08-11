@@ -189,6 +189,23 @@ nav a:hover {
 
 }
 
+nav a.doom-link:hover,
+nav a.doom-link:focus-visible {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  nav a.doom-link:hover {
+    animation: doom-link-flicker 180ms steps(2, end) 1;
+  }
+}
+
+@keyframes doom-link-flicker {
+  50% { opacity: 0.45; }
+}
+
 
 /* ================================
    MAIN
