@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A small interactive retro listening room by Mahmut Esat Kolay. Choose a record, place it on the turntable, and continue listening on Spotify.">
+  <title>Listening Room | Mahmut Esat Kolay</title>
+  <link rel="icon" type="image/png" href="assets/branding/mek-icon.png">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="listening-room.css">
+</head>
+
+<body class="listening-room-page">
+  <header class="topbar listening-room-topbar">
+    <a class="logo" href="index.html" aria-label="Return to Mahmut Esat Kolay portfolio">
+      <img src="assets/branding/mek-icon.png" alt="MEK">
+    </a>
+    <nav aria-label="Listening Room navigation">
+      <a href="index.html">← Back to portfolio</a>
+    </nav>
+    <span class="room-catalog" aria-hidden="true">CATALOG NO. MEK-001</span>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+      <span class="theme-icon" aria-hidden="true">☾</span>
+      <span class="theme-label">DARK</span>
+    </button>
+  </header>
+
+  <main class="listening-room-main">
+    <header class="room-intro">
+      <p class="file">listening-room/side-a</p>
+      <h1>The Listening Room</h1>
+      <p>Choose a record. Settle in. Press play.</p>
+    </header>
+
+    <section class="room-console" aria-label="Interactive listening room">
+      <div class="turntable-column">
+        <div class="turntable-window window">
+          <div class="windowbar room-windowbar">
+            <span aria-hidden="true">○ ○</span>
+            <b>personal-pressing.deck</b>
+            <span>33⅓ RPM</span>
+          </div>
+
+          <div class="turntable" id="turntable">
+            <span class="deck-screw screw-one" aria-hidden="true"></span>
+            <span class="deck-screw screw-two" aria-hidden="true"></span>
+            <span class="deck-screw screw-three" aria-hidden="true"></span>
+            <span class="deck-screw screw-four" aria-hidden="true"></span>
+
+            <div class="platter" id="platter" aria-hidden="true">
+              <div class="platter-rings"></div>
+              <div class="mounted-record" id="mounted-record">
+                <span class="mounted-label" id="mounted-label"></span>
+              </div>
+              <span class="spindle"></span>
+            </div>
+
+            <div class="tonearm-assembly" aria-hidden="true">
+              <span class="tonearm-pivot"></span>
+              <div class="tonearm" id="tonearm">
+                <span class="tonearm-head"></span>
+              </div>
+            </div>
+
+            <div class="power-readout">
+              <span class="power-led" id="power-led" aria-hidden="true"></span>
+              <span>POWER</span>
+            </div>
+
+            <div class="deck-controls">
+              <button class="deck-button play-button" id="play-record" type="button" disabled>
+                <span aria-hidden="true">▶</span> Play
+              </button>
+              <button class="deck-button eject-button" id="eject-record" type="button" disabled>
+                Eject
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section class="now-loaded" aria-labelledby="now-loaded-label">
+          <p class="now-loaded-label" id="now-loaded-label">On deck</p>
+          <h2 id="record-title">No record loaded</h2>
+          <p id="record-subtitle">Select a pressing from the shelf.</p>
+          <p class="room-status" id="room-status" role="status" aria-live="polite">STANDBY</p>
+          <button class="spotify-button" id="open-spotify" type="button" disabled>
+            Open in Spotify <span aria-hidden="true">↗</span>
+          </button>
+        </section>
+      </div>
+
+      <section class="collection-column" aria-labelledby="collection-title">
+        <div class="collection-heading">
+          <div>
+            <p class="file">vinyl-collection/</p>
+            <h2 id="collection-title">The shelf</h2>
+          </div>
+          <p>Select a sleeve to load the deck.</p>
+        </div>
+
+        <div class="record-shelf" id="record-shelf" aria-label="Playlist records"></div>
+        <div class="shelf-base" aria-hidden="true"></div>
+      </section>
+    </section>
+
+    <p class="room-footnote">PROPERTY OF MEK · NO AUDIO PLAYS HERE · SPOTIFY OPENS ONLY AFTER PLAY</p>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="listening-room.js"></script>
+</body>
+</html>
