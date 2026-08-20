@@ -371,6 +371,43 @@ main {
 
 }
 
+.listening-room-entry {
+  width: fit-content;
+  margin: 18px 0 0;
+  padding: 5px 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font: 700 13px "Space Grotesk";
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.listening-room-entry span {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.listening-room-entry:hover,
+.listening-room-entry:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .listening-room-entry span {
+    transition: transform 180ms ease;
+  }
+
+  .listening-room-entry:hover span {
+    transform: rotate(35deg);
+  }
+}
+
 
 /* ================================
    RETRO WINDOW
